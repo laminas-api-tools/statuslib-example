@@ -1,22 +1,24 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
  */
 
 namespace StatusLib;
 
-use Zend\Db\Adapter\AdapterInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
-use Zend\Db\TableGateway\TableGateway as ZFTableGateway;
-use Zend\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
+use Laminas\Db\Adapter\AdapterInterface;
+use Laminas\Db\ResultSet\HydratingResultSet;
+use Laminas\Db\TableGateway\TableGateway as LaminasTableGateway;
+use Laminas\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
 
 /**
  * Custom TableGateway instance for StatusLib
  *
  * Creates a HydratingResultSet seeded with an ObjectProperty hydrator and Entity instance.
  */
-class TableGateway extends ZFTableGateway
+class TableGateway extends LaminasTableGateway
 {
     public function __construct($table, AdapterInterface $adapter, $features = null)
     {

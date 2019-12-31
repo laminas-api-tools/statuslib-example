@@ -1,24 +1,24 @@
 StatusLib
 =========
 
-This is a library designed to demonstrate an [Apigility](http://apigility.org/) "Code-Connected"
-REST API, and has been written in parallel with the [Apigility documentation](https://github.com/zfcampus/apigility-documentation).
+This is a library designed to demonstrate an [Laminas API Tools](https://api-tools.getlaminas.org/) "Code-Connected"
+REST API, and has been written in parallel with the [Laminas API Tools documentation](https://github.com/laminas-api-tools/api-tools-documentation).
 
 It uses the following components:
 
 - [rhumsaa/uuid](https://github.com/ramsey/uuid), a library for generating and validating UUIDs.
-- [zfcampus/zf-configuration](https://github.com/zfcampus/zf-configuration), used for providing PHP
+- [laminas-api-tools/api-tools-configuration](https://github.com/laminas-api-tools/api-tools-configuration), used for providing PHP
   files as one possible backend for reading/writing status messages.
-- [zendframework/zend-config](https://framework.zend.com/) for the actual configuration writer used
-  by the `zf-configuration` module.
-- [zendframework/zend-db](https://framework.zend.com/), used for providing a database table as a
+- [laminas/laminas-config](https://getlaminas.org/) for the actual configuration writer used
+  by the `api-tools-configuration` module.
+- [laminas/laminas-db](https://getlaminas.org/), used for providing a database table as a
   backend for reading/writing status messages.
-- [zendframework/zend-stdlib](https://framework.zend.com/), specifically the Hydrator subcomponent,
+- [laminas/laminas-stdlib](https://getlaminas.org/), specifically the Hydrator subcomponent,
   for casting data from arrays to objects, and for the `ArrayUtils` class, which provides advanced
   array merging capabilities.
-- [zendframework/zend-paginator](https://framework.zend.com/) for providing pagination.
+- [laminas/laminas-paginator](https://getlaminas.org/) for providing pagination.
 
-It is written as a Zend Framework 2 module, but could potentially be dropped into other
+It is written as a Laminas module, but could potentially be dropped into other
 applications; use the `StatusLib\*Factory` classes to see how dependencies might be injected.
 
 Installation
@@ -27,10 +27,10 @@ Installation
 Use [Composer](https://getcomposer.org/) to install the library in your application:
 
 ```console
-$ composer require zfcampus/statuslib-example:dev-master
+$ composer require laminas-api-tools/statuslib-example:dev-master
 ```
 
-If you are using this as part of a Zend Framework 2 or Apigility application, you will also need to
+If you are using this as part of a Laminas or Laminas API Tools application, you will also need to
 enable the module in your `config/application.config.php` file:
 
 ```php
@@ -47,7 +47,7 @@ return array(
 Configuration
 -------------
 
-When used as a Zend Framework 2 module, you may define the following configuration values in order
+When used as a Laminas module, you may define the following configuration values in order
 to tell the library which adapter to use, and what options to pass to that adapter.
 
 ```php
@@ -66,7 +66,7 @@ array(
 )
 ```
 
-For purposes of the Apigility examples, we suggest the following:
+For purposes of the Laminas API Tools examples, we suggest the following:
 
 - Create a PHP file in your application's `data/` directory named `statuslib.php` that returns an
   array:
@@ -106,19 +106,19 @@ The schema can be either used directly by other databases, or easily modified to
 databases.
 
 
-StatusLib in a New ZF2 Project
+StatusLib in a New Laminas Project
 ------------------------------
 
-1. Create a new ZF2 project from scratch, we'll use `my-project` as our project folder:
+1. Create a new Laminas project from scratch, we'll use `my-project` as our project folder:
 
   ```console
-  $ composer create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application my-project
+  $ composer create-project -sdev --repository-url="https://getlaminas.org/" laminas/skeleton-application my-project
   ```
 
 2. Install the StatusLib module:
 
   ```console
-  $ composer require zfcampus/statuslib-example:dev-master
+  $ composer require laminas-api-tools/statuslib-example:dev-master
   ```
 
 3. Build a DataSource
@@ -128,7 +128,7 @@ StatusLib in a New ZF2 Project
       First, copy the sample array to the `data` directory of thet application:
 
       ```console
-      $ cp vendor/zfcampus/statuslib-example/data/sample-data/array-data.php data/status.data.php
+      $ cp vendor/laminas-api-tools/statuslib-example/data/sample-data/array-data.php data/status.data.php
       ```
 
       Then, configure this datasource by setting up a `local.php` configuration file:
@@ -155,8 +155,8 @@ StatusLib in a New ZF2 Project
       First, create a sqlite3 database, and fill it with the sample data:
 
       ```console
-      $ sqlite3 status.db < vendor/zfcampus/statuslib-example/data/statuslib.sqlite.sql
-      $ sqlite3 status.db < vendor/zfcampus/statuslib-example/data/sample-data/db-sqlite-insert.sql
+      $ sqlite3 status.db < vendor/laminas-api-tools/statuslib-example/data/statuslib.sqlite.sql
+      $ sqlite3 status.db < vendor/laminas-api-tools/statuslib-example/data/sample-data/db-sqlite-insert.sql
       ```
   
       Then, configure this datasource by setting up a `local.php` configuration file:
@@ -185,7 +185,7 @@ StatusLib in a New ZF2 Project
               'StatusLib\Mapper' => 'StatusLib\TableGatewayMapper',
           ),
           'abstract_factories' => array(
-              'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterAbstractServiceFactory',
+              'Laminas\Db\Adapter\Adapter' => 'Laminas\Db\Adapter\AdapterAbstractServiceFactory',
           )
       ),
       ```
