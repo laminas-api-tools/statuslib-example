@@ -1,41 +1,49 @@
 {
-    "name": "zfcampus/statuslib-example",
-    "description": "Library for use with Apigility documentation examples",
-    "type": "library",
+    "name": "laminas-api-tools/statuslib-example",
+    "description": "Library for use with Laminas API Tools documentation examples",
     "license": "BSD-3-Clause",
     "keywords": [
-        "apigility",
-        "framework",
-        "zf2"
+        "laminas",
+        "api-tools",
+        "framework"
     ],
-    "homepage": "http://apigility.org/",
+    "homepage": "https://api-tools.getlaminas.org",
     "support": {
-        "email": "apigility-users@zend.com",
-        "irc": "irc://irc.freenode.net/apigility",
-        "source": "https://github.com/zfcampus/statuslib-example",
-        "issues": "https://github.com/zfcampus/statuslib-example/issues"
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "issues": "https://github.com/laminas-api-tools/statuslib-example/issues",
+        "source": "https://github.com/laminas-api-tools/statuslib-example",
+        "rss": "https://github.com/laminas-api-tools/statuslib-example/releases.atom",
+        "chat": "https://laminas.dev/chat",
+        "forum": "https://discourse.laminas.dev"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
             "dev-master": "1.1-dev"
         },
-        "zf": {
+        "laminas": {
             "module": "StatusLib"
         }
     },
     "require": {
         "php": "^5.6 || ^7.0",
-        "ramsey/uuid": "^2.8",
-        "zendframework/zend-config": "^3.1",
-        "zendframework/zend-db": "^2.8.2",
-        "zendframework/zend-paginator": "^2.7",
-        "zendframework/zend-hydrator": "^1.1 || ^2.0 || ^3.0",
-        "zendframework/zend-stdlib": "^2.7.7 || ^3.0.1",
-        "zfcampus/zf-configuration": "^1.0"
+        "laminas-api-tools/api-tools-configuration": "^1.0",
+        "laminas/laminas-config": "^3.1",
+        "laminas/laminas-db": "^2.8.2",
+        "laminas/laminas-hydrator": "^1.1 || ^2.0 || ^3.0",
+        "laminas/laminas-paginator": "^2.7",
+        "laminas/laminas-stdlib": "^2.7.7 || ^3.0.1",
+        "laminas/laminas-zendframework-bridge": "^1.0",
+        "ramsey/uuid": "^2.8"
     },
     "autoload": {
         "psr-4": {
             "StatusLib\\": "src/"
         }
+    },
+    "replace": {
+        "zfcampus/statuslib-example": "self.version"
     }
 }
