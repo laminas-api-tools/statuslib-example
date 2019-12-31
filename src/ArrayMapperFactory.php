@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
  */
 
 namespace StatusLib;
 
 use DomainException;
-use Zend\Config\Writer\PhpArray as ConfigWriter;
-use ZF\Configuration\ConfigResource;
+use Laminas\ApiTools\Configuration\ConfigResource;
+use Laminas\Config\Writer\PhpArray as ConfigWriter;
 
 /**
  * Service factory for the ArrayMapper
@@ -18,7 +20,7 @@ use ZF\Configuration\ConfigResource;
  * to a valid filesystem path of a PHP file that will return an array.
  *
  * Passes the data from the file, the path to the file, and a PhpArray config
- * writer to a ZF\Configuration\ConfigResource instance, and passes the data
+ * writer to a Laminas\ApiTools\Configuration\ConfigResource instance, and passes the data
  * and the ConfigResource instance to the ArrayMapper.
  */
 class ArrayMapperFactory
