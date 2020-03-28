@@ -44,6 +44,6 @@
         }
     },
     "replace": {
-        "zfcampus/statuslib-example": "self.version"
+        "zfcampus/statuslib-example": "^1.2.0"
     }
 }
