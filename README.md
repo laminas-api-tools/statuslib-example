@@ -1,5 +1,7 @@
 # StatusLib
 
+[![Build Status](https://github.com/laminas-api-tools/statuslib-example/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/laminas-api-tools/statuslib-example/actions/workflows/continuous-integration.yml)
+
 This is a library designed to demonstrate an [Laminas API Tools](https://api-tools.getlaminas.org/) "Code-Connected"
 REST API, and has been written in parallel with the [Laminas API Tools documentation](https://github.com/laminas-api-tools/api-tools-documentation).
 
