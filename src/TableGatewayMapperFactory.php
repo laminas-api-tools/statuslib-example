@@ -9,6 +9,10 @@
 namespace StatusLib;
 
 use DomainException;
+use Psr\Container\ContainerInterface;
+use StatusLib\TableGateway;
+
+use function sprintf;
 
 /**
  * Service factory for returning a StatusLib\TableGatewayMapper instance.
@@ -17,9 +21,13 @@ use DomainException;
  */
 class TableGatewayMapperFactory
 {
+    /**
+     * @param ContainerInterface $services
+     * @return TableGatewayMapper
+     */
     public function __invoke($services)
     {
-        if (! $services->has('StatusLib\TableGateway')) {
+        if (! $services->has(TableGateway::class)) {
             throw new DomainException(sprintf(
                 'Cannot create %s; missing %s dependency',
                 TableGatewayMapper::class,

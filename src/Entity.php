@@ -10,23 +10,15 @@ namespace StatusLib;
 
 class Entity
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $message;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     public $timestamp;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $user;
 }

@@ -1,20 +1,29 @@
 {
     "name": "laminas-api-tools/statuslib-example",
     "description": "Library for use with Laminas API Tools documentation examples",
-    "license": "BSD-3-Clause",
     "keywords": [
         "laminas",
         "api-tools",
         "framework"
     ],
     "homepage": "https://api-tools.getlaminas.org",
-    "support": {
-        "docs": "https://api-tools.getlaminas.org/documentation",
-        "issues": "https://github.com/laminas-api-tools/statuslib-example/issues",
-        "source": "https://github.com/laminas-api-tools/statuslib-example",
-        "rss": "https://github.com/laminas-api-tools/statuslib-example/releases.atom",
-        "chat": "https://laminas.dev/chat",
-        "forum": "https://discourse.laminas.dev"
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": "^7.3",
+        "laminas-api-tools/api-tools-configuration": "^1.0",
+        "laminas/laminas-config": "^3.1",
+        "laminas/laminas-db": "^2.8.2",
+        "laminas/laminas-hydrator": "^1.1 || ^2.0 || ^3.0",
+        "laminas/laminas-paginator": "^2.7",
+        "laminas/laminas-stdlib": "^2.7.7 || ^3.0.1",
+        "laminas/laminas-zendframework-bridge": "^1.0",
+        "ramsey/uuid": "^2.8"
+    },
+    "replace": {
+        "zfcampus/statuslib-example": "^1.2.0"
+    },
+    "require-dev": {
+        "laminas/laminas-coding-standard": "~2.1.0"
     },
     "config": {
         "sort-packages": true
@@ -27,23 +36,24 @@
             "module": "StatusLib"
         }
     },
-    "require": {
-        "php": "^5.6 || ^7.0",
-        "laminas-api-tools/api-tools-configuration": "^1.0",
-        "laminas/laminas-config": "^3.1",
-        "laminas/laminas-db": "^2.8.2",
-        "laminas/laminas-hydrator": "^1.1 || ^2.0 || ^3.0",
-        "laminas/laminas-paginator": "^2.7",
-        "laminas/laminas-stdlib": "^2.7.7 || ^3.0.1",
-        "laminas/laminas-zendframework-bridge": "^1.0",
-        "ramsey/uuid": "^2.8"
-    },
     "autoload": {
         "psr-4": {
             "StatusLib\\": "src/"
         }
     },
-    "replace": {
-        "zfcampus/statuslib-example": "^1.2.0"
+    "scripts": {
+        "check": [
+            "@cs-check"
+        ],
+        "cs-check": "phpcs --colors",
+        "cs-fix": "phpcbf --colors"
+    },
+    "support": {
+        "issues": "https://github.com/laminas-api-tools/statuslib-example/issues",
+        "forum": "https://discourse.laminas.dev",
+        "chat": "https://laminas.dev/chat",
+        "source": "https://github.com/laminas-api-tools/statuslib-example",
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "rss": "https://github.com/laminas-api-tools/statuslib-example/releases.atom"
     }
 }

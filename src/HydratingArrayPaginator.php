@@ -18,26 +18,21 @@ use stdClass;
  */
 class HydratingArrayPaginator extends ArrayPaginator
 {
-    /**
-     * @var object
-     */
+    /** @var object */
     protected $entityPrototype;
 
-    /**
-     * @var HydratorInterface
-     */
+    /** @var HydratorInterface */
     protected $hydrator;
 
     /**
      * @param array $array
-     * @param null|HydratorInterface $hydrator
      * @param null|mixed $entityPrototype A prototype entity to use with the hydrator
      */
-    public function __construct(array $array = array(), HydratorInterface $hydrator = null, $entityPrototype = null)
+    public function __construct(array $array = [], ?HydratorInterface $hydrator = null, $entityPrototype = null)
     {
         parent::__construct($array);
-        $this->hydrator = $hydrator;
-        $this->entityPrototype = $entityPrototype ?: new stdClass;
+        $this->hydrator        = $hydrator;
+        $this->entityPrototype = $entityPrototype ?: new stdClass();
     }
 
     /**
@@ -57,7 +52,7 @@ class HydratingArrayPaginator extends ArrayPaginator
             return $set;
         }
 
-        $collection = array();
+        $collection = [];
         foreach ($set as $item) {
             $collection[] = $this->hydrator->hydrate($item, clone $this->entityPrototype);
         }

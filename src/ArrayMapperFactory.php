@@ -11,6 +11,12 @@ namespace StatusLib;
 use DomainException;
 use Laminas\ApiTools\Configuration\ConfigResource;
 use Laminas\Config\Writer\PhpArray as ConfigWriter;
+use Psr\Container\ContainerInterface;
+
+use function file_exists;
+use function is_array;
+use function realpath;
+use function sprintf;
 
 /**
  * Service factory for the ArrayMapper
@@ -25,6 +31,10 @@ use Laminas\Config\Writer\PhpArray as ConfigWriter;
  */
 class ArrayMapperFactory
 {
+    /**
+     * @param ContainerInterface $services
+     * @return ArrayMapper
+     */
     public function __invoke($services)
     {
         if (! $services->has('config')) {

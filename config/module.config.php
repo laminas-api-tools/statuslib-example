@@ -9,11 +9,11 @@
 namespace StatusLib;
 
 return [
-    'statuslib' => [
+    'statuslib'       => [
         // 'array_mapper_path' => 'path/to/PHP/file/returning/array.php',
     ],
     'service_manager' => [
-        'aliases' => [
+        'aliases'   => [
             Mapper::class => ArrayMapper::class,
 
             // Legacy Zend Framework aliases
