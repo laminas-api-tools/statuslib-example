@@ -1,14 +1,14 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace StatusLib;
 
 use DomainException;
+use Psr\Container\ContainerInterface;
+use StatusLib\TableGateway;
+
+use function sprintf;
 
 /**
  * Service factory for returning a StatusLib\TableGatewayMapper instance.
@@ -17,9 +17,13 @@ use DomainException;
  */
 class TableGatewayMapperFactory
 {
+    /**
+     * @param ContainerInterface $services
+     * @return TableGatewayMapper
+     */
     public function __invoke($services)
     {
-        if (! $services->has('StatusLib\TableGateway')) {
+        if (! $services->has(TableGateway::class)) {
             throw new DomainException(sprintf(
                 'Cannot create %s; missing %s dependency',
                 TableGatewayMapper::class,

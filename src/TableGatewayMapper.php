@@ -1,10 +1,6 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace StatusLib;
 
@@ -13,28 +9,30 @@ use InvalidArgumentException;
 use Laminas\Paginator\Adapter\DbTableGateway;
 use Laminas\Stdlib\ArrayUtils;
 use Rhumsaa\Uuid\Uuid;
+use stdClass;
 use Traversable;
+
+use function count;
+use function is_array;
+use function is_object;
+use function sprintf;
+use function time;
 
 /**
  * Mapper implementation using a Laminas\Db\TableGateway
  */
 class TableGatewayMapper implements MapperInterface
 {
-    /**
-     * @var TableGateway
-     */
+    /** @var TableGateway */
     protected $table;
 
-    /**
-     * @param TableGateway $table
-     */
     public function __construct(TableGateway $table)
     {
         $this->table = $table;
     }
 
     /**
-     * @param array|Traversable|\stdClass $data
+     * @param array|Traversable|stdClass $data
      * @return Entity
      */
     public function create($data)
@@ -93,7 +91,7 @@ class TableGatewayMapper implements MapperInterface
 
     /**
      * @param string $id
-     * @param array|Traversable|\stdClass $data
+     * @param array|Traversable|stdClass $data
      * @return Entity
      */
     public function update($id, $data)

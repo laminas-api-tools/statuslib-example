@@ -1,32 +1,20 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace StatusLib;
 
 class Entity
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $message;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     public $timestamp;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     public $user;
 }

@@ -1,10 +1,6 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace StatusLib;
 
@@ -15,52 +11,51 @@ use Laminas\Hydrator\ObjectProperty;
 use Laminas\Hydrator\ObjectPropertyHydrator;
 use Laminas\Stdlib\ArrayUtils;
 use Rhumsaa\Uuid\Uuid;
+use stdClass;
 use Traversable;
+
+use function array_key_exists;
+use function class_exists;
+use function is_array;
+use function is_object;
+use function sprintf;
+use function time;
 
 /**
  * Mapper implementation using a file returning PHP arrays
  */
 class ArrayMapper implements MapperInterface
 {
-    /**
-     * @var ConfigResource
-     */
+    /** @var ConfigResource */
     protected $configResource;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $data;
 
-    /**
-     * @var Entity
-     */
+    /** @var Entity */
     protected $entityPrototype;
 
-    /**
-     * @var ObjectProperty|ObjectPropertyHydrator
-     */
+    /** @var ObjectProperty|ObjectPropertyHydrator */
     protected $hydrator;
 
     /**
      * @param array $data
-     * @param ConfigResource $configResource
      */
     public function __construct(array $data, ConfigResource $configResource)
     {
-        $this->data = $data;
+        $this->data           = $data;
         $this->configResource = $configResource;
 
-        $hydratorClass = class_exists(ObjectPropertyHydrator::class)
+        $hydratorClass  = class_exists(ObjectPropertyHydrator::class)
             ? ObjectPropertyHydrator::class
             : ObjectProperty::class;
         $this->hydrator = new $hydratorClass();
 
-        $this->entityPrototype = new Entity;
+        $this->entityPrototype = new Entity();
     }
 
     /**
-     * @param array|Traversable|\stdClass $data
+     * @param array|Traversable|stdClass $data
      * @return Entity
      */
     public function create($data)
@@ -118,7 +113,7 @@ class ArrayMapper implements MapperInterface
 
     /**
      * @param string $id
-     * @param array|Traversable|\stdClass $data
+     * @param array|Traversable|stdClass $data
      * @return Entity
      */
     public function update($id, $data)
@@ -134,7 +129,7 @@ class ArrayMapper implements MapperInterface
             throw new DomainException('Cannot update; no such status message', 404);
         }
 
-        $updated = ArrayUtils::merge($this->data[$id], $data);
+        $updated              = ArrayUtils::merge($this->data[$id], $data);
         $updated['timestamp'] = time();
 
         $this->data[$id] = $updated;

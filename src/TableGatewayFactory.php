@@ -1,14 +1,13 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/statuslib-example for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/statuslib-example/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/statuslib-example/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace StatusLib;
 
 use DomainException;
+use Psr\Container\ContainerInterface;
+
+use function sprintf;
 
 /**
  * Service factory for the StatusLib TableGateway
@@ -23,6 +22,10 @@ use DomainException;
  */
 class TableGatewayFactory
 {
+    /**
+     * @param ContainerInterface $services
+     * @return TableGateway
+     */
     public function __invoke($services)
     {
         $db    = 'Db\StatusLib';
@@ -32,8 +35,8 @@ class TableGatewayFactory
             switch (isset($config['statuslib'])) {
                 case true:
                     $config = $config['statuslib'];
-                    $db     = isset($config['db']) ? $config['db'] : $db;
-                    $table  = isset($config['table']) ? $config['table'] : $table;
+                    $db     = $config['db'] ?? $db;
+                    $table  = $config['table'] ?? $table;
                     break;
                 case false:
                 default:
